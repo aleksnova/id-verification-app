@@ -38,14 +38,17 @@ app.post("/id-verification", async (req, res) => {
     },
     data: identification,
   };
-  const alloy_reponse = await axios(request_config);
-
-  if (alloy_reponse.status === 201 && alloy_reponse.data?.summary?.outcome) {
-    return res.send({
+  try {
+    const alloy_reponse = await axios(request_config);
+    if (alloy_reponse.data?.summary?.result === 'success') {
+      return res.send({
         outcome: alloy_reponse.data.summary.outcome,
       });
-  }else{
-      //return some error
+    } else {
+      throw 'error processing the request'
+    }
+  } catch (err) {
+    return res.status(400).send('error processing the request');
   }
 });
 
