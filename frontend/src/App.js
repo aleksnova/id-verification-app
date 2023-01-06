@@ -50,6 +50,7 @@ function App() {
               try {
                 const response = await axios(request_config);
                 setResult(response.data.outcome)
+                event.target.reset();
               } catch (err) {
                 setResult("error")
               }
