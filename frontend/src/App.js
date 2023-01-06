@@ -78,16 +78,16 @@ function App() {
               <Grid container spacing={2}
                 direction="row">
                 <Grid item xs={6}>
-                  <TextField required name="firstName" id="firstName" label="First Name" variant="outlined" defaultValue="John" />
+                  <TextField required name="firstName" id="firstName" label="First Name" variant="outlined" />
                 </Grid>
                 <Grid item xs={6}>
-                  <TextField required name="lastName" id="lastName" label="Last Name" variant="outlined" defaultValue="Doe" />
+                  <TextField required name="lastName" id="lastName" label="Last Name" variant="outlined" />
                 </Grid>
               </Grid>
               <Grid container spacing={2}
                 direction="row">
                 <Grid item xs={6}>
-                  <TextField required name="line1" id="line1" label="Address" variant="outlined" defaultValue="15 Circle Road" />
+                  <TextField required name="line1" id="line1" label="Address" variant="outlined" />
                 </Grid>
                 <Grid item xs={6}>
                   <TextField name="line2" id="line2" label="Apt # / Suite" variant="outlined" />
@@ -96,15 +96,15 @@ function App() {
               <Grid container spacing={2}
                 direction="row">
                 <Grid item xs={3}>
-                  <TextField sx={{ maxWidth: 100 }} required name="city" id="city" label="City" variant="outlined" defaultValue="New York" />
+                  <TextField sx={{ maxWidth: 100 }} required name="city" id="city" label="City" variant="outlined" />
                 </Grid>
                 <Grid item xs={3}>
-                  <TextField sx={{ maxWidth: 100 }} select required name="state" id="state" label="State" variant="outlined" defaultValue="NY">
+                  <TextField sx={{ maxWidth: 100 }} select required name="state" id="state" label="State" variant="outlined">
                     {STATES.map(state => <MenuItem key={state} value={state}> {state} </MenuItem>)}
                   </TextField>
                 </Grid>
                 <Grid item xs={3}>
-                  <TextField sx={{ maxWidth: 100 }} required name="zip" id="zip" label="Zip" variant="outlined" defaultValue="12345"
+                  <TextField sx={{ maxWidth: 100 }} required name="zip" id="zip" label="Zip" variant="outlined"
                     inputProps={{
                       pattern: "[0-9]{5}"
                     }} />
@@ -118,17 +118,17 @@ function App() {
               <Grid container
                 direction="column" alignItems="flex-start" >
                 <Grid item xs={8}>
-                  <TextField required name="ssn" id="ssn" label="SSN" variant="outlined" defaultValue="123456789"
+                  <TextField required name="ssn" id="ssn" label="SSN" variant="outlined"
                     inputProps={{
                       pattern: "[0-9]{9}"
                     }}
                   />
                 </Grid>
                 <Grid item xs={8}>
-                  <TextField required type="email" name="email" id="email" label="Email Address" variant="outlined" defaultValue="john@doe.com" />
+                  <TextField required type="email" name="email" id="email" label="Email Address" variant="outlined" />
                 </Grid>
                 <Grid item xs={8}>
-                  <TextField type="date" required name="dob" id="dob" label="Date of Birth" variant="outlined" defaultValue="2000-01-25"
+                  <TextField type="date" required name="dob" id="dob" label="Date of Birth" variant="outlined"
                     InputLabelProps={{
                       shrink: true
                     }}
