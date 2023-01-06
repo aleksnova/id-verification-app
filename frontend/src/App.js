@@ -99,7 +99,7 @@ function App() {
                   <TextField sx={{ maxWidth: 100 }} required name="city" id="city" label="City" variant="outlined" />
                 </Grid>
                 <Grid item xs={3}>
-                  <TextField sx={{ maxWidth: 100 }} select required name="state" id="state" label="State" variant="outlined">
+                  <TextField sx={{ maxWidth: 100 }} select required name="state" id="state" label="State" variant="outlined" defaultValue=''>
                     {STATES.map(state => <MenuItem key={state} value={state}> {state} </MenuItem>)}
                   </TextField>
                 </Grid>
