@@ -10,7 +10,11 @@ import {
   DialogTitle,
   DialogContent,
   IconButton,
-  CircularProgress
+  CircularProgress,
+  Backdrop,
+  AppBar,
+  Toolbar,
+  Typography
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import axios from 'axios';
@@ -19,14 +23,22 @@ import axios from 'axios';
 function App() {
   const [result, setResult] = useState(null);
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   return (
     <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="fixed">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Application Form
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <Grid container spacing={2}
         direction="column"
         justifyContent="center"
         alignItems="center"
         style={{ minHeight: '100vh' }}>
-        <Paper elevation={3} sx={{ paddingLeft: 16, paddingRight: 16, paddingTop: 8, paddingBottom: 8, marginTop: 8, marginBottom: 8 }}>
+        <Paper elevation={3} sx={{ paddingLeft: 16, paddingRight: 16, paddingTop: 8, paddingBottom: 8, marginTop: 16, marginBottom: 8 }}>
           <Box
             component="form"
             sx={{
@@ -34,6 +46,7 @@ function App() {
             }}
             onSubmit={async (event) => {
               event.preventDefault()
+              setLoading(true)
               let formData = new FormData(event.target)
               let identification = {}
               for (let field of formData.entries()) {
@@ -54,6 +67,7 @@ function App() {
               } catch (err) {
                 setResult("error")
               }
+              setLoading(false)
               setOpen(true)
             }}
           >
@@ -132,6 +146,12 @@ function App() {
           </Box>
         </Paper>
       </Grid>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={loading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Dialog onClose={() => setOpen(false)} open={open}>
         <DialogTitle sx={{ m: 0, p: 3 }}>
           <IconButton
